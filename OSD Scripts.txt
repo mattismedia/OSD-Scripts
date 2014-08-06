@@ -1,0 +1,26 @@
+Run package as Admin:
+
+Under <VIRTUALENV TERMINATECHILDREN="FALSE"> tag paste:
+<ENVLIST>
+<ENVIRONMENT VARIABLE="__COMPAT_LAYER">RunAsInvoker</ENVIRONMENT>
+</ENVLIST>
+
+Map drives (add a slash to escape backslash in script and add at end of each line "\n")
+
+Under <DEPENDENCY> tag paste:
+
+<SCRIPT EVENT="LAUNCH" TIMING="PRE" PROTECT="TRUE" WAIT="TRUE">
+ <SCRIPTBODY>net use x: /delete /y \n
+ net use X: "\\\\Servername\\foldername" /USER:username password \n
+ </SCRIPTBODY>  
+</SCRIPT>
+
+
+Add registry keys, paste above </VIRTUALENV> tag:
+
+<REGISTRY>
+    <REGKEY HIVE="HKLM" KEY="Software\Key\Key\Key">
+    <REGVALUE REGTYPE="REG_SZ" NAME="Name of string">here comes value of string</REGVALUE>;
+    </REGKEY>
+</REGISTRY>
+
