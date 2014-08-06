@@ -16,6 +16,16 @@ Under <DEPENDENCY> tag paste:
 </SCRIPT>
 
 
+Disconnect mapped drives POST shutdown:
+
+<SCRIPT EVENT="SHUTDOWN" TIMING="POST" PROTECT="TRUE" WAIT="TRUE">
+<SCRIPTBODY>net use E: /delete /y \n
+    	    net use F: /delete /y \n
+</SCRIPTBODY>
+</SCRIPT>
+
+
+
 Add registry keys, paste above </VIRTUALENV> tag:
 
 <REGISTRY>
